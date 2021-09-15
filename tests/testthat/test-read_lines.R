@@ -155,3 +155,8 @@ test_that("read_lines works with lots of lines that don't end with a newline", {
   expect_equal(read_lines(tmp, 0), character())
   expect_equal(read_lines(tmp, 1), "a")
 })
+
+test_that("Memory leak does not occur on read error", {
+  skip_if_not_installed('vdiffr', '1.0')
+  vdiffr::expect_doppelganger('simple-plot', function() plot(1, 1))
+})
